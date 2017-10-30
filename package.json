@@ -1,0 +1,25 @@
+{
+  "name": "constructor-hangman",
+  "version": "1.0.0",
+  "description": "hangman made with node",
+  "main": "hangman-node.js",
+  "dependencies": {
+    "inquirer": "^3.3.0",
+    "is-letter": "^1.1.1",
+    "prompt": "^1.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JJ-Code/constructor-hangman.git"
+  },
+  "author": "jj-code",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JJ-Code/constructor-hangman/issues"
+  },
+  "homepage": "https://github.com/JJ-Code/constructor-hangman#readme"
+}
