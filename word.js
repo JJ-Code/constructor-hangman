@@ -1,17 +1,18 @@
 var Letter = require("./letter");
 
 
-console.log(Letter);
+// console.log(Letter);
 
 // Creating constructor function to create a new game play word
 var Word = function(chosenWord) {
   this.lives = 8;
   this.chosenWord = chosenWord;
+  // console.log(this.chosenWord);
   this.lettersOfWord = [];
   this.allGuesses = [];
   //allows this.letters to use the letter constuctor function
   for (var i = 0; i < this.chosenWord.length; i++) {
-    this.lettersOfWor.push(new Letter.Letter(this.chosenWord[i]))
+    this.lettersOfWord.push(new Letter.Letter(this.chosenWord[i]))
   }
 };
 
@@ -62,4 +63,4 @@ Word.prototype.printWord = function() {
   return outputOfWord;
 };
 
-module.exports = {Word};
+module.exports = Word;

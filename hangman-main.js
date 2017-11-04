@@ -1,13 +1,24 @@
 var inquirer = require("inquirer");
 var isLetter = require("is-letter");
 var letter = require("./letter");
-var game = require("./Game");
-var word = require("./Word");
+var game = require("./game");
+var Word = require("./word");
 
-var displayHangman = game.wordBank.hangman;
-var gameWord;
-// console.log(game.wordBank.wordList[1]);
+//coping array to manupliate
+var copyWordBank = game.wordBank.wordList;
+// console.log(copyWordBank);
+// console.log(game.wordBank.wordList[0]);
 
+// var displayHangman = game.wordBank.hangman;
+var gameWord = newWordToGuess(copyWordBank);
+// console.log(gameWord);
+
+// newWordToGuess(game.wordBank.wordList);
+startGame();
+
+
+
+//startGame function
 function startGame() {
   inquirer.prompt([{
     name: "play",
@@ -22,9 +33,24 @@ function startGame() {
   }) //end of annoymous then function
 } // end of startGame
 
+//function to generate new word to guess
+function newWordToGuess(wordArray) {
+  var randIndex = Math.floor(Math.random() * wordArray.length)
+  var randomWord = wordArray[randIndex]
+  var gameWord = new Word(randomWord)
+    //remove gameWord from wordArray
+    wordArray.splice(randIndex, 1)
+// console.log(randIndex);
+    //if copyWordBank is empty reset the array to copyWordBank=game.wordBank.wordList
+    if (wordArray.length === 0){
+      wordArray = game.wordBank.wordList;
+    }
+    return gameWord;
+  };
 
+//playGame function
 function playGame() {
-  console.log(gameWord);
+  // console.log(gameWord);
   inquirer.prompt([{
     name: "letter",
     type: "text",
@@ -49,7 +75,7 @@ function playGame() {
       if(gameWord.allLettersGussed()){
       console.log("The word is" + gameWord);
     } else if (gameWord.lives === 0) {
-      console.log("All out of lives. The word is: " + gameWord);
+      console.log("All out of lives. The word is: " + gameWord.chosenWord);
 
     } else {
       console.log("You have " + gameWord.lives + "lives left.");
@@ -64,18 +90,3 @@ function playGame() {
 
 
 };//end of playGame
-
-
-function newWordToGuess(wordArray) {
-  var randWordArr = Math.floor(Math.random() * wordArray)
-    for (var i = 0; i < randWordArr.length; i++) {
-      return gameWord = new word.Word.game.chosenWord(randWordArr[i])
-    }
-
-
-  };//end of newWordToGuess
-
-
-  newWordToGuess(game.wordBank.wordList);
-
-  startGame();
