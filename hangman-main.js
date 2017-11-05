@@ -75,7 +75,7 @@ function playGame() {
       if(gameWord.allLettersGussed()){
       console.log("The word is" + gameWord);
     } else if (gameWord.lives === 0) {
-      console.log("All out of lives. The word is: " + gameWord.chosenWord);
+      console.log("All out of lives. The word is: " + gameWord);
 
     } else {
       console.log("You have " + gameWord.lives + "lives left.");
